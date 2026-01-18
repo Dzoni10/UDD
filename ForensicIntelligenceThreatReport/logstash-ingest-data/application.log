@@ -1,0 +1,158 @@
+2026-01-18T08:54:58.775+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : Starting ForensicIntelligenceThreatReportApplication using Java 23.0.1 with PID 45112 (C:\UDD\Projekat\UDD\ForensicIntelligenceThreatReport\target\classes started by HP in C:\UDD\Projekat\UDD\ForensicIntelligenceThreatReport)
+2026-01-18T08:54:58.777+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : No active profile set, falling back to 1 default profile: "default"
+2026-01-18T08:54:59.604+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2026-01-18T08:54:59.625+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 0 Elasticsearch repository interfaces.
+2026-01-18T08:54:59.841+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=63eac44a-190f-3f2b-a4ab-952976e1f9de
+2026-01-18T08:55:00.237+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-18T08:55:00.259+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-18T08:55:00.260+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2026-01-18T08:55:00.379+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-18T08:55:00.380+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1537 ms
+2026-01-18T08:55:01.658+01:00  WARN 45112 --- [ForensicIntelligenceThreatReport] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: a8d45fdd-7f01-4631-904f-80a65141433f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-01-18T08:55:01.665+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-01-18T08:55:02.808+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-01-18T08:55:02.888+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-01-18T08:55:03.900+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-01-18T08:55:03.911+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : Started ForensicIntelligenceThreatReportApplication in 6.766 seconds (process running for 7.744)
+2026-01-18T08:55:26.366+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-18T08:55:26.373+01:00  INFO 45112 --- [ForensicIntelligenceThreatReport] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-01-18T10:51:31.379+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : Starting ForensicIntelligenceThreatReportApplication using Java 23.0.1 with PID 42356 (C:\UDD\Projekat\UDD\ForensicIntelligenceThreatReport\target\classes started by HP in C:\UDD\Projekat\UDD\ForensicIntelligenceThreatReport)
+2026-01-18T10:51:31.383+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : No active profile set, falling back to 1 default profile: "default"
+2026-01-18T10:51:33.605+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-18T10:51:33.611+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2026-01-18T10:51:33.704+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.forensicintelligencethreatreport.forensicintelligencethreatreport.repository.UserRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-01-18T10:51:33.706+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 76 ms. Found 0 Elasticsearch repository interfaces.
+2026-01-18T10:51:33.734+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-18T10:51:33.737+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-18T10:51:33.843+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 91 ms. Found 1 JPA repository interface.
+2026-01-18T10:51:34.527+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f3af1e90-3dce-3d32-a2bf-dd6eef75fff9
+2026-01-18T10:51:35.612+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-18T10:51:35.649+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-18T10:51:35.651+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2026-01-18T10:51:35.881+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-18T10:51:35.882+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4355 ms
+2026-01-18T10:51:36.434+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-18T10:51:36.622+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2026-01-18T10:51:36.756+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-18T10:51:37.656+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-18T10:51:37.757+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-18T10:51:38.290+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@173cfb01
+2026-01-18T10:51:38.295+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-18T10:51:38.387+01:00  WARN 42356 --- [ForensicIntelligenceThreatReport] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-18T10:51:38.447+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-18T10:51:40.985+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-18T10:51:41.118+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-18T10:51:43.495+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authProvider
+2026-01-18T10:51:43.497+01:00  WARN 42356 --- [ForensicIntelligenceThreatReport] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-01-18T10:51:43.909+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-01-18T10:51:46.529+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-01-18T10:51:46.747+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-01-18T10:51:47.760+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-01-18T10:51:47.794+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : Started ForensicIntelligenceThreatReportApplication in 18.714 seconds (process running for 20.893)
+2026-01-18T10:52:33.981+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-18T10:52:33.998+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-01-18T10:52:34.020+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-18T10:52:34.027+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-18T10:52:34.168+01:00  INFO 42356 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-18T10:52:48.431+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : Starting ForensicIntelligenceThreatReportApplication using Java 23.0.1 with PID 45152 (C:\UDD\Projekat\UDD\ForensicIntelligenceThreatReport\target\classes started by HP in C:\UDD\Projekat\UDD\ForensicIntelligenceThreatReport)
+2026-01-18T10:52:48.438+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : No active profile set, falling back to 1 default profile: "default"
+2026-01-18T10:52:51.357+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-18T10:52:51.363+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2026-01-18T10:52:51.480+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.forensicintelligencethreatreport.forensicintelligencethreatreport.repository.UserRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-01-18T10:52:51.482+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 97 ms. Found 0 Elasticsearch repository interfaces.
+2026-01-18T10:52:51.517+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-18T10:52:51.520+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-18T10:52:51.643+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 107 ms. Found 1 JPA repository interface.
+2026-01-18T10:52:52.307+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f3af1e90-3dce-3d32-a2bf-dd6eef75fff9
+2026-01-18T10:52:53.310+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-18T10:52:53.342+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-18T10:52:53.343+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2026-01-18T10:52:53.546+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-18T10:52:53.547+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4914 ms
+2026-01-18T10:52:54.002+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-18T10:52:54.149+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2026-01-18T10:52:54.242+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-18T10:52:54.926+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-18T10:52:55.014+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-18T10:52:55.485+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@11f9b95a
+2026-01-18T10:52:55.491+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-18T10:52:55.572+01:00  WARN 45152 --- [ForensicIntelligenceThreatReport] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-18T10:52:55.625+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-18T10:52:58.281+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-18T10:52:58.430+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-18T10:53:00.677+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authProvider
+2026-01-18T10:53:00.680+01:00  WARN 45152 --- [ForensicIntelligenceThreatReport] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-01-18T10:53:01.214+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-01-18T10:53:03.929+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-01-18T10:53:04.233+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-01-18T10:53:05.251+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-01-18T10:53:05.286+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : Started ForensicIntelligenceThreatReportApplication in 19.354 seconds (process running for 21.543)
+2026-01-18T10:53:20.435+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-18T10:53:20.451+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-01-18T10:53:20.473+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-18T10:53:20.479+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-18T10:53:20.496+01:00  INFO 45152 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-18T10:53:41.503+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : Starting ForensicIntelligenceThreatReportApplication using Java 23.0.1 with PID 39740 (C:\UDD\Projekat\UDD\ForensicIntelligenceThreatReport\target\classes started by HP in C:\UDD\Projekat\UDD\ForensicIntelligenceThreatReport)
+2026-01-18T10:53:41.511+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : No active profile set, falling back to 1 default profile: "default"
+2026-01-18T10:53:44.362+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-18T10:53:44.371+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2026-01-18T10:53:44.474+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] .RepositoryConfigurationExtensionSupport : Spring Data Elasticsearch - Could not safely identify store assignment for repository candidate interface com.forensicintelligencethreatreport.forensicintelligencethreatreport.repository.UserRepository; If you want this repository to be a Elasticsearch repository, consider annotating your entities with one of these annotations: org.springframework.data.elasticsearch.annotations.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+2026-01-18T10:53:44.476+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 0 Elasticsearch repository interfaces.
+2026-01-18T10:53:44.507+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-18T10:53:44.509+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-18T10:53:44.619+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 1 JPA repository interface.
+2026-01-18T10:53:45.332+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f3af1e90-3dce-3d32-a2bf-dd6eef75fff9
+2026-01-18T10:53:46.660+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-18T10:53:46.699+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-18T10:53:46.700+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2026-01-18T10:53:47.059+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-18T10:53:47.060+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5343 ms
+2026-01-18T10:53:47.661+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-18T10:53:47.807+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2026-01-18T10:53:47.883+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-18T10:53:48.559+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-18T10:53:48.623+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-18T10:53:49.042+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7e1762e6
+2026-01-18T10:53:49.045+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-18T10:53:49.109+01:00  WARN 39740 --- [ForensicIntelligenceThreatReport] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-18T10:53:49.150+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-18T10:53:51.821+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-18T10:53:51.959+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-18T10:53:54.528+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authProvider
+2026-01-18T10:53:54.530+01:00  WARN 39740 --- [ForensicIntelligenceThreatReport] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-01-18T10:53:54.971+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-01-18T10:53:57.902+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-01-18T10:53:58.165+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-01-18T10:53:59.183+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] o.s.cloud.commons.util.InetUtils         : Cannot determine local hostname
+2026-01-18T10:53:59.217+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : Started ForensicIntelligenceThreatReportApplication in 20.271 seconds (process running for 22.515)
+2026-01-18T10:54:22.612+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-18T10:54:22.627+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-01-18T10:54:22.645+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-18T10:54:22.649+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-18T10:54:22.661+01:00  INFO 39740 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
