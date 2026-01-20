@@ -1,0 +1,22 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="form-container" @slideIn>
+    
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email"/>
+      <mat-error *ngIf="hasError('email')">{{ getErrorMessage('email') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password"/>
+      <mat-error *ngIf="hasError('password')">{{ getErrorMessage('password') }}</mat-error>
+    </mat-form-field>
+
+    <button class="btnLogin" color="primary" type="submit" mat-raised-button [disabled]="loginForm.invalid">
+      LogIn
+    </button>
+    
+    <p>Don't have an account yet?<a href="/signup">Sign up</a></p>
+  </div>
+</form>

@@ -1,0 +1,9 @@
+package com.forensicintelligencethreatreport.forensicintelligencethreatreport.indexrepository;
+
+import com.forensicintelligencethreatreport.forensicintelligencethreatreport.indexmodel.DummyIndex;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface DummyIndexRepository extends ElasticsearchRepository<DummyIndex,String> {
+}
