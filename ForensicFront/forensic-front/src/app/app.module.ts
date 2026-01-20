@@ -3,16 +3,46 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card'
+import {MatSnackBarModule} from "@angular/material/snack-bar"
+import {MatIconModule} from "@angular/material/icon"
+import { AuthModule } from './auth/auth.module';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import {MatDialogModule} from '@angular/material/dialog'
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatOptionModule } from '@angular/material/core';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NoopAnimationsModule
+    MatCardModule,
+    MatSnackBarModule,
+    MatIconModule,
+    AuthModule,
+    NoopAnimationsModule,
+    RouterModule,
+    HttpClientModule,
+    MatDialogModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    SharedModule,
+    MatButtonModule,
+    MatOptionModule,
+    MatInputModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

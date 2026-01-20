@@ -1,0 +1,47 @@
+<form [formGroup]="signupForm" (ngSubmit)="register()">
+  <div class="form-container" @slideIn>
+    
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" type="text" maxlength="50"/>
+      <mat-error *ngIf="hasError('name')">{{ getErrorMessage('name') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Surname</mat-label>
+      <input matInput formControlName="surname" type="text" maxlength="50"/>
+      <mat-error *ngIf="hasError('surname')">{{ getErrorMessage('surname') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email"/>
+      <mat-error *ngIf="hasError('email')">{{ getErrorMessage('email') }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" (input)="checkPasswordStrength()" type="password" maxlength="128"/>
+      <mat-error *ngIf="hasError('password')">{{ getErrorMessage('password') }}</mat-error>
+      
+      <p *ngIf="passwordStrength===0 && signupForm.get('password')?.value && !hasError('password')" class="very-weak">Very weak</p>
+      <p *ngIf="passwordStrength===1 && !hasError('password')" class="weak">Weak</p>
+      <p *ngIf="passwordStrength===2 && !hasError('password')" class="medium">Medium</p>
+      <p *ngIf="passwordStrength===3 && !hasError('password')" class="strong">Strong</p>
+      <p *ngIf="passwordStrength===4 && !hasError('password')" class="very-strong">Very strong</p>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Confirm password</mat-label>
+      <input matInput formControlName="password2" type="password" maxlength="128"/>
+      <mat-error *ngIf="hasError('password2')">{{ getErrorMessage('password2') }}</mat-error>
+      <mat-error *ngIf="signupForm.hasError('passwordMismatch') && signupForm.get('password2')?.touched">
+        Passwords does not match
+      </mat-error>
+    </mat-form-field>
+
+    <button color="primary" type="submit" mat-raised-button [disabled]="signupForm.invalid">
+      Sign up
+    </button>
+  </div>
+</form>

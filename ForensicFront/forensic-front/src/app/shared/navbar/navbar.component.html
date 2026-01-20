@@ -1,0 +1,8 @@
+<div id="nav-bar"> 
+    <div class="navbar-title">Car Web Shop</div>
+
+    <div class="navbar-buttons">
+        <button mat-raised-button *ngIf="!isLoggedIn()" class="login-button" [routerLink]="['login']">Log in</button>
+        <button mat-raised-button *ngIf="isLoggedIn()" class="logout-button" [routerLink]="['login']" (click)="logout()">Log out</button>
+    </div>
+</div>
