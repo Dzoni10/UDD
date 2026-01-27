@@ -1,0 +1,100 @@
+<div class="upload-container">
+  <!-- Header -->
+  <div class="upload-header">
+    <h1>📁 Upload forensic report</h1>
+    <p class="description">Drag pdf file or choose file localy</p>
+  </div>
+
+  <!-- Main Content -->
+  <div class="upload-content">
+    
+    <!-- Ako nije fajl izabran -->
+    <div *ngIf="!isFileSelected()" 
+         class="upload-area" 
+         [class.drag-over]="isDragOver"
+         (dragover)="onDragOver($event)"
+         (dragleave)="onDragLeave($event)"
+         (drop)="onDrop($event)">
+      
+      <svg class="upload-icon" viewBox="0 0 64 64">
+        <path d="M32 8L32 48M12 28L32 8L52 28" stroke="currentColor" stroke-width="2" fill="none"/>
+        <rect x="8" y="50" width="48" height="4" fill="currentColor"/>
+      </svg>
+
+      <h2>Drag file there</h2>
+      <p class="or-text">or</p>
+
+      <label class="file-input-label">
+        <span class="btn-choose">Choose file</span>
+        <input 
+          #fileInput
+          type="file" 
+          accept=".pdf,application/pdf"
+          (change)="onFileSelected($event)"
+          class="file-input"
+        />
+      </label>
+
+      <div class="file-requirements">
+        <p>📋 Only pdf files</p>
+        <p>📊 Max size: {{ MAX_FILE_SIZE_MB }}MB</p>
+      </div>
+    </div>
+
+    <!-- Ako je fajl izabran -->
+    <div *ngIf="isFileSelected()" class="selected-file-info">
+      <div class="file-details-card">
+        <div class="file-icon">📄</div>
+        
+        <div class="file-info">
+          <h3>{{ fileName }}</h3>
+          <p class="file-size">Size: {{ formatFileSize(fileSize) }}</p>
+          <p class="file-type">Type: {{ ALLOWED_FILE_TYPE }}</p>
+        </div>
+
+        <button 
+          class="btn-remove"
+          (click)="cancelUpload()"
+          mat-icon-button
+          matTooltip="Ukloniti fajl">
+          X
+        </button>
+      </div>
+
+      <!-- Upload Progress -->
+      <div class="upload-progress-section" *ngIf="isUploading">
+        <mat-progress-bar mode="determinate" [value]="uploadProgress"></mat-progress-bar>
+        <p class="progress-text">Upload: {{ uploadProgress }}%</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button 
+          class="btn btn-upload"
+          (click)="uploadFile()"
+          [disabled]="isUploading">
+          {{ isUploading ? 'Loading...' : '⬆️ Load file' }}
+        </button>
+
+        <button 
+          class="btn btn-cancel"
+          (click)="cancelUpload()"
+          [disabled]="isUploading">
+           Cancel
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Info Card -->
+  <div class="info-card">
+    <h3>ℹ️ Important info</h3>
+    <ul>
+      <li>After upload you can view data</li>
+      <li>Only pdf files are allowed</li>
+      <li>Max file size {{ MAX_FILE_SIZE_MB }}MB</li>
+    </ul>
+  </div>
+
+</div>

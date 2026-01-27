@@ -9,7 +9,7 @@ import {MatIconModule} from "@angular/material/icon"
 import { AuthModule } from './auth/auth.module';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from '@angular/material/dialog'
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +18,8 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
+import { ReportModule } from './report/report.module';
+import { AuthInterceptor } from './auth/interceptor-jwt/jwt-interceptor';
 
 @NgModule({
   declarations: [
@@ -41,10 +43,13 @@ import {MatInputModule} from '@angular/material/input';
     SharedModule,
     MatButtonModule,
     MatOptionModule,
-    MatInputModule
+    MatInputModule,
+    ReportModule
     
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

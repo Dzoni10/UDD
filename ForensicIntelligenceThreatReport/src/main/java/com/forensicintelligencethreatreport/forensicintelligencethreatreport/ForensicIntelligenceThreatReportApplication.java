@@ -27,7 +27,7 @@ public class ForensicIntelligenceThreatReportApplication {
                         .allowedMethods("GET","POST","PUT","DELETE","OPTIONS")
                         .allowedHeaders("Authorization", "Content-Type")
                         .exposedHeaders("Authorization")
-                        .allowCredentials(true);
+                        .allowCredentials(false);
             }
         };
     }

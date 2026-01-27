@@ -1,6 +1,7 @@
 package com.forensicintelligencethreatreport.forensicintelligencethreatreport.auth;
 
 import com.forensicintelligencethreatreport.forensicintelligencethreatreport.model.Role;
+import io.jsonwebtoken.io.Decoders;
 import org.springframework.stereotype.Component;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -13,8 +14,8 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private static final String SECRET = "secret_password_for_encoding_messages";
-    private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(SECRET.getBytes());
+    private static final String SECRET = "Rk9SRU5TSUNfSU5URUxMSUdFTkNFX1RIUkVBVF9SRVBPUlRfU0VDUkVUXzMyX0JZVEVT";
+    private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(Decoders.BASE64.decode(SECRET));
 
     public static String generateToken(int userId, Role role) {
 

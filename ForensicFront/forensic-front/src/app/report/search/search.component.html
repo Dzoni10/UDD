@@ -1,0 +1,293 @@
+<div class="search-container">
+
+  <!-- Header -->
+  <div class="search-header">
+    <h1>🔍 Search forensic reports</h1>
+    <p class="subtitle">Choose type for search and input parameters</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="search-tabs">
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'basic'"
+      (click)="activeTab = 'basic'">
+      📋 Basic
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'advanced'"
+      (click)="activeTab = 'advanced'">
+      ⚙️ Boolean
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'knn'"
+      (click)="activeTab = 'knn'">
+       KNN (Similar search)
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'phrase'"
+      (click)="activeTab = 'phrase'">
+      💬 Phrase
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'fulltext'"
+      (click)="activeTab = 'fulltext'">
+      📄 Text
+    </button>
+  </div>
+
+  <!-- Search Forms -->
+  <div class="search-content">
+
+
+<!-- OSNOVNA PRETRAGA -->
+    <div *ngIf="activeTab === 'basic'" class="search-form basic-form">
+      <h2>Basic Search</h2>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label>Forensician: </label>
+          <input 
+            type="text" 
+            [(ngModel)]="searchRequest.forensician_name"
+            placeholder="Input forensician name"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>🏢 Organization</label>
+          <input 
+            type="text" 
+            [(ngModel)]="searchRequest.organization"
+            placeholder="Input name of organization"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Malware </label>
+          <input 
+            type="text" 
+            [(ngModel)]="searchRequest.malware_name"
+            placeholder="Input name of malware"
+          />
+        </div>
+
+        <div class="form-group">
+          <label>🔐 Hash Value</label>
+          <input 
+            type="text" 
+            [(ngModel)]="searchRequest.hash_value"
+            placeholder="MD5 or SHA256"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>⚠️ Threat level</label>
+          <select [(ngModel)]="searchRequest.threat_level">
+            <option value="">All</option>
+            <option value="low">🟢 Low</option>
+            <option value="medium">🟡 Medium</option>
+            <option value="high">🟠 High</option>
+            <option value="critical">🔴 Critical</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>📝 Free search</label>
+          <input 
+            type="text" 
+            [(ngModel)]="searchRequest.search_text"
+            placeholder="Search . . ."
+          />
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-search" (click)="performBasicSearch()" [disabled]="isSearching">
+          {{ isSearching ? '⏳ Searching...' : '🔍 Search' }}
+        </button>
+        <button class="btn btn-clear" (click)="clearForm()">🗑️ Delete</button>
+      </div>
+    </div>
+
+    <!-- NAPREDNA PRETRAGA -->
+    <div *ngIf="activeTab === 'advanced'" class="search-form advanced-form">
+      <h2>Boolean Search (AND/OR/NOT)</h2>
+      
+      <div class="expressions-container">
+        <div *ngFor="let expr of advancedExpressions; let i = index" class="expression-group">
+          <div class="expression-input">
+            <input 
+              type="text" 
+              [(ngModel)]="advancedExpressions[i]"
+              placeholder="Input: field:value (exp. forensician:John)"
+            />
+            <button 
+              *ngIf="advancedExpressions.length > 2"
+              class="btn-remove"
+              (click)="removeAdvancedExpression(i)">
+              ✕
+            </button>
+          </div>
+
+          <div *ngIf="i < advancedOperators.length" class="operator-select">
+            <select [(ngModel)]="advancedOperators[i]">
+              <option value="AND">AND</option>
+              <option value="OR">OR</option>
+              <option value="NOT">NOT</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-add-expression" (click)="addAdvancedExpression()">
+        ➕ Add expression
+      </button>
+
+      <div class="form-actions">
+        <button class="btn btn-search" (click)="performAdvancedSearch()" [disabled]="isSearching">
+          {{ isSearching ? '⏳ Advance searching...' : '🔍 Search advance' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- KNN PRETRAGA -->
+    <div *ngIf="activeTab === 'knn'" class="search-form knn-form">
+      <h2>Find similar documents (KNN)</h2>
+      
+      <div class="form-group form-group-full">
+        <label>Input text</label>
+        <textarea 
+          [(ngModel)]="knnQuery"
+          placeholder="Input text - system wil find similar documents"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-search" (click)="performKnnSearch()" [disabled]="isSearching">
+          {{ isSearching ? '⏳ Searching...' : '🔍 Search similar' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- PHRASE PRETRAGA -->
+    <div *ngIf="activeTab === 'phrase'" class="search-form phrase-form">
+      <h2>Phrase search</h2>
+      
+      <div class="form-group form-group-full">
+        <label>💬 Input phrase</label>
+        <input 
+          type="text" 
+          [(ngModel)]="phraseQuery"
+          placeholder="Exp: 'bankovni trojanac'"
+        />
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-search" (click)="performPhraseSearch()" [disabled]="isSearching">
+          {{ isSearching ? '⏳ Searching...' : '🔍 Search phrase' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- FULLTEXT PRETRAGA -->
+    <div *ngIf="activeTab === 'fulltext'" class="search-form fulltext-form">
+      <h2>Full-Text Search</h2>
+      
+      <div class="form-group form-group-full">
+        <label>📄 Input text for search</label>
+        <textarea 
+          [(ngModel)]="fulltextQuery"
+          placeholder="Text will be searched in all document"
+          rows="4"
+        ></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-search" (click)="performFulltextSearch()" [disabled]="isSearching">
+          {{ isSearching ? '⏳ Searching...' : '🔍 Search text' }}
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Results -->
+  <div *ngIf="results.length > 0" class="search-results">
+    <h2>📊 Results ({{ totalResults }} found)</h2>
+
+    <div class="results-list">
+      <div *ngFor="let result of results" class="result-card">
+        <div class="result-header">
+          <h3>{{ result.title }}</h3>
+          <div class="relevance-score">
+            Score: {{ (result.relevance_score * 100).toFixed(0) }}%
+          </div>
+        </div>
+
+        <div class="result-meta">
+          <span *ngIf="result.forensician_name" class="meta-item">
+            👤 {{ result.forensician_name }}
+          </span>
+          <span *ngIf="result.organization" class="meta-item">
+            🏢 {{ result.organization }}
+          </span>
+          <span *ngIf="result.threat_level" class="meta-item threat" 
+            [style.backgroundColor]="getThreatLevelColor(result.threat_level)">
+            {{ getThreatLevelLabel(result.threat_level) }}
+          </span>
+        </div>
+
+        <p class="result-summary" [innerHTML]="highlightText(result.content_summary, activeTab === 'knn' ? knnQuery : '')">
+        </p>
+
+        <div *ngIf="result.highlighted_content | keyvalue" class="highlights">
+          <div *ngFor="let item of result.highlighted_content | keyvalue" class="highlight-item">
+            <strong>{{ item.key }}:</strong>
+            <p [innerHTML]="item.value"></p>
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <button class="btn-detail">📥 Detailed</button>
+          <button class="btn-download">⬇️ Download</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button 
+        [disabled]="currentPage === 0"
+        (click)="goToPage(currentPage - 1)">
+        ◀ Previous
+      </button>
+
+      <span class="page-info">
+        Page {{ currentPage + 1 }} od {{ totalPages }}
+      </span>
+
+      <button 
+        [disabled]="currentPage === totalPages - 1"
+        (click)="goToPage(currentPage + 1)">
+        Next ▶
+      </button>
+    </div>
+
+  </div>
+
+  <!-- No Results -->
+  <div *ngIf="!isSearching && results.length === 0 && totalResults === 0" class="no-results">
+    <p>📭 There are no results for you search. Try with another search.</p>
+  </div>
+
+</div>

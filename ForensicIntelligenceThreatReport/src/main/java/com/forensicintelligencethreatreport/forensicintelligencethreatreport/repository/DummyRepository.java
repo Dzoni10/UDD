@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DummyRepository extends JpaRepository<DummyTable,Integer> {
+    void deleteByServerFilename(String serverFilename);
 }

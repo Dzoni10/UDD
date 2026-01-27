@@ -10,4 +10,5 @@ public interface FileService {
     String store(MultipartFile file,String serverFilename);
     void delete(String serverFilename);
     GetObjectResponse loadAsResource(String serverFilename);
+    String getSignedUrl(String serverFilename, int expirySeconds);
 }

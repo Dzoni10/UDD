@@ -1,0 +1,172 @@
+<div class="parse-preview-container">
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="loading-spinner">
+    <mat-spinner diameter="50"></mat-spinner>
+    <p>Loading and analysis...</p>
+  </div>
+
+  <!-- Main Content -->
+  <div *ngIf="!isLoading && parsedDocument" class="parse-content">
+
+    <!-- Header -->
+    <div class="parse-header">
+      <h1>📋 Review parsed document</h1>
+      <p class="subtitle">Check and update your parsed data if needed</p>
+      <div class="confidence-badge">
+         Reliability: {{ (parsedDocument.confidence_score * 100).toFixed(0) }}%
+      </div>
+    </div>
+
+    <!-- Form -->
+    <form class="parse-form" (ngSubmit)="confirmAndIndex()">
+
+      <!-- Row 1: Forenzičar i Organizacija -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="forensician">👤 Forensician *</label>
+          <input 
+            type="text" 
+            id="forensician"
+            [(ngModel)]="editedDocument.forensician_name"
+            name="forensician_name"
+            placeholder="Input name of forensician"
+            [class.modified]="isFieldModified('forensician_name')"
+            required
+          />
+          <small *ngIf="isFieldModified('forensician_name')" class="modified-indicator">
+             Can change
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="organization">🏢 Organization (CERT/CSIRT) *</label>
+          <input 
+            type="text" 
+            id="organization"
+            [(ngModel)]="editedDocument.organization"
+            name="organization"
+            placeholder="Input organization name"
+            [class.modified]="isFieldModified('organization')"
+            required
+          />
+          <small *ngIf="isFieldModified('organization')" class="modified-indicator">
+             Can change
+          </small>
+        </div>
+      </div>
+
+      <!-- Row 2: Malver i Klasifikacija -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="malware">🦠 Name of malware/threat *</label>
+          <input 
+            type="text" 
+            id="malware"
+            [(ngModel)]="editedDocument.malware_name"
+            name="malware_name"
+            placeholder="Input malware name"
+            [class.modified]="isFieldModified('malware_name')"
+            required
+          />
+          <small *ngIf="isFieldModified('malware_name')" class="modified-indicator">
+             Can change
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="threatLevel">⚠️ Threat classification *</label>
+          <select 
+            id="threatLevel"
+            [(ngModel)]="editedDocument.threat_level"
+            name="threat_level"
+            [class.modified]="isFieldModified('threat_level')"
+          >
+            <option *ngFor="let level of threatLevels" [value]="level">
+              {{ getThreatLevelLabel(level) }}
+            </option>
+          </select>
+          <small *ngIf="isFieldModified('threat_level')" class="modified-indicator">
+            ✏️ Can change
+          </small>
+        </div>
+      </div>
+
+      <!-- Row 3: Heševi -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="md5">🔐 MD5 hash</label>
+          <input 
+            type="text" 
+            id="md5"
+            [(ngModel)]="editedDocument.hash_md5"
+            name="hash_md5"
+            placeholder="MD5 hash (32 characters)"
+            [class.modified]="isFieldModified('hash_md5')"
+          />
+          <small *ngIf="isFieldModified('hash_md5')" class="modified-indicator">
+            ✏️ Can change
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label for="sha256">🔐 SHA256 hash</label>
+          <input 
+            type="text" 
+            id="sha256"
+            [(ngModel)]="editedDocument.hash_sha256"
+            name="hash_sha256"
+            placeholder="SHA256 hash (64 characterss)"
+            [class.modified]="isFieldModified('hash_sha256')"
+          />
+          <small *ngIf="isFieldModified('hash_sha256')" class="modified-indicator">
+            ✏️ Can change
+          </small>
+        </div>
+      </div>
+
+      <!-- Row 4: Opis (Full Width) -->
+      <div class="form-group form-group-full">
+        <label for="description">📝 Description of threat behavior</label>
+        <textarea 
+          id="description"
+          [(ngModel)]="editedDocument.malware_description"
+          name="malware_description"
+          placeholder="Input description of behavior"
+          rows="5"
+          [class.modified]="isFieldModified('malware_description')"
+        ></textarea>
+        <small *ngIf="isFieldModified('malware_description')" class="modified-indicator">
+          ✏️ Promenljivo
+        </small>
+      </div>
+
+      <!-- Info Card -->
+      <div class="info-card" *ngIf="getModifiedFieldsCount() > 0">
+        <h3>ℹ️ Updated data</h3>
+        <p>You changed <strong>{{ getModifiedFieldsCount() }}</strong> field(s)</p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button 
+          type="submit" 
+          class="btn btn-confirm"
+          [disabled]="isProcessing">
+          {{ isProcessing ? '⏳ Indexing...' : '✅ Accept and index' }}
+        </button>
+
+        <button 
+          type="button" 
+          class="btn btn-cancel"
+          (click)="cancelAndDelete()"
+          [disabled]="isProcessing">
+          {{ isProcessing ? '⏳ Removing...' : '❌ Cancel' }}
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

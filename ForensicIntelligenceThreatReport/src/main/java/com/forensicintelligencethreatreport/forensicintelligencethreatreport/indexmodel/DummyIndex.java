@@ -17,7 +17,7 @@ import java.lang.annotation.Documented;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(indexName = "dummy_index")
-@Setting(settingPath = "/configuration/serbian-analyzer.config")
+@Setting(settingPath = "/configuration/serbian-analyzer-config.json")
 public class DummyIndex {
     @Id
     private String id;
@@ -30,6 +30,24 @@ public class DummyIndex {
 
     @Field(type = FieldType.Text, store = true, name = "content_en", analyzer = "english", searchAnalyzer = "english")
     private String contentEn;
+
+    @Field(type = FieldType.Text, name = "forensician_name")
+    private String forensicianName;
+
+    @Field(type = FieldType.Text, name = "organization")
+    private String organization;
+
+    @Field(type = FieldType.Text, name = "malware_name")
+    private String malwareName;
+
+    @Field(type = FieldType.Keyword, name = "threat_level") // Keyword je bolji za kategorije (low, high)
+    private String threatLevel;
+
+    @Field(type = FieldType.Keyword, name = "hash_md5")
+    private String hashMd5;
+
+    @Field(type = FieldType.Keyword, name = "hash_sha256")
+    private String hashSha256;
 
     @Field(type = FieldType.Text, store = true, name = "server_filename", index = false)
     private String serverFilename;

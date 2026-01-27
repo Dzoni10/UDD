@@ -33,23 +33,20 @@ public class SecurityConfig {
                 .cors(cors -> {}) // koristi globalni WebMvcConfigurer ako ga imaš
                 .authorizeHttpRequests(auth -> auth
                         // Swagger potpuno otvoren
-                        .requestMatchers(
-                                "/swagger-ui/**",
-                                "/swagger-ui.html",
-                                "/v3/api-docs/**",
-                                "/swagger-resources/**",
-                                "/webjars/**"
-                        ).permitAll()
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/users/signup").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/v1/cars").hasRole("USER")
+                        .requestMatchers(HttpMethod.POST, "/api/file/upload").hasAuthority("ROLE_USER")
+                        .requestMatchers(HttpMethod.POST, "/api/parse-preview/").hasAuthority("ROLE_USER")
+                        .requestMatchers(HttpMethod.POST, "/api/parse-preview/confirm").hasAuthority("ROLE_USER")
+                        .requestMatchers("/api/search/**").hasAuthority("ROLE_USER")
 
 
                         // Sve ostalo traži auth
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .httpBasic(httpBasic -> {})
+                //.httpBasic(httpBasic -> {})
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
