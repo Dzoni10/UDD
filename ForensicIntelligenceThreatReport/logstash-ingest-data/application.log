@@ -209,3 +209,73 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
+2026-01-28T12:05:51.571+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : Starting ForensicIntelligenceThreatReportApplication using Java 23.0.1 with PID 984 (C:\UDD\UDD\ForensicIntelligenceThreatReport\target\classes started by HP in C:\UDD\UDD\ForensicIntelligenceThreatReport)
+2026-01-28T12:05:51.577+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : No active profile set, falling back to 1 default profile: "default"
+2026-01-28T12:05:53.328+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-28T12:05:53.330+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Elasticsearch repositories in DEFAULT mode.
+2026-01-28T12:05:53.428+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 1 Elasticsearch repository interface.
+2026-01-28T12:05:54.030+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2026-01-28T12:05:54.032+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-28T12:05:54.098+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] .RepositoryConfigurationExtensionSupport : Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.forensicintelligencethreatreport.forensicintelligencethreatreport.indexrepository.DummyIndexRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2026-01-28T12:05:54.132+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88 ms. Found 2 JPA repository interfaces.
+2026-01-28T12:05:54.803+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=93006647-ddf3-37f0-9b03-5314b528f615
+2026-01-28T12:05:55.900+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-28T12:05:55.936+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-28T12:05:55.937+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.46]
+2026-01-28T12:05:56.186+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-28T12:05:56.187+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4453 ms
+2026-01-28T12:05:56.735+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-28T12:05:56.911+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.29.Final
+2026-01-28T12:05:57.026+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-28T12:05:57.841+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-28T12:05:57.931+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-28T12:05:58.487+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5e05a706
+2026-01-28T12:05:58.493+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-28T12:05:58.590+01:00  WARN 984 --- [ForensicIntelligenceThreatReport] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-28T12:05:58.649+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-01-28T12:06:01.146+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-28T12:06:01.341+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-28T12:06:08.324+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] ai.djl.pytorch.engine.PtEngine           : PyTorch graph executor optimizer is enabled, this may impact your inference latency and throughput. See: https://docs.djl.ai/docs/development/inference_performance_optimization.html#graph-executor-optimization
+2026-01-28T12:06:08.339+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] ai.djl.pytorch.engine.PtEngine           : Number of inter-op threads is 8
+2026-01-28T12:06:08.340+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] ai.djl.pytorch.engine.PtEngine           : Number of intra-op threads is 4
+2026-01-28T12:06:08.838+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] ai.djl.util.Platform                     : Found matching platform from: jar:file:/C:/Users/HP/.m2/repository/ai/djl/huggingface/tokenizers/0.28.0/tokenizers-0.28.0.jar!/native/lib/tokenizers.properties
+2026-01-28T12:06:10.091+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authProvider
+2026-01-28T12:06:10.093+01:00  WARN 984 --- [ForensicIntelligenceThreatReport] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-01-28T12:06:10.483+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-01-28T12:06:12.244+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-01-28T12:06:13.116+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [main] ensicIntelligenceThreatReportApplication : Started ForensicIntelligenceThreatReportApplication in 23.846 seconds (process running for 26.342)
+2026-01-28T12:11:55.425+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-28T12:11:55.426+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-28T12:11:55.431+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-01-28T12:12:52.689+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-1] c.f.f.controller.SearchController        : Basic search request: BasicSearchRequestDTO[forensicianName=u, organization=, malwareName=, hashValue=, threatLevel=, searchText=, isKnn=false]
+2026-01-28T12:12:52.713+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-1] c.f.f.service.impl.SearchServiceImpl     : Executing basic search
+2026-01-28T12:12:53.360+01:00  WARN 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-1] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2026-01-28T12:13:42.293+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-10] c.f.f.controller.SearchController        : Basic search request: BasicSearchRequestDTO[forensicianName=u, organization=, malwareName=, hashValue=, threatLevel=, searchText=, isKnn=false]
+2026-01-28T12:13:42.294+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-10] c.f.f.service.impl.SearchServiceImpl     : Executing basic search
+2026-01-28T12:14:39.186+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-3] c.f.f.controller.SearchController        : Full-text search: u
+2026-01-28T12:14:39.187+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-3] c.f.f.service.impl.SearchServiceImpl     : Executing full-text search for: u
+2026-01-28T12:14:46.089+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-6] c.f.f.controller.SearchController        : Full-text search: trojanac
+2026-01-28T12:14:46.089+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-6] c.f.f.service.impl.SearchServiceImpl     : Executing full-text search for: trojanac
+2026-01-28T13:19:50.021+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-4] c.f.f.controller.SearchController        : Full-text search: Text
+
+2026-01-28T13:19:50.022+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-4] c.f.f.service.impl.SearchServiceImpl     : Executing full-text search for: Text
+
+2026-01-28T13:19:55.837+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-8] c.f.f.controller.SearchController        : Full-text search: Ransomware
+
+2026-01-28T13:19:55.838+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [http-nio-0.0.0.0-8080-exec-8] c.f.f.service.impl.SearchServiceImpl     : Executing full-text search for: Ransomware
+
+2026-01-28T13:24:58.316+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2026-01-28T13:24:58.323+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2026-01-28T13:24:58.331+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-28T13:24:58.334+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-28T13:24:58.338+01:00  INFO 984 --- [ForensicIntelligenceThreatReport] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -1,8 +1,6 @@
 package com.forensicintelligencethreatreport.forensicintelligencethreatreport.service.impl;
 
 import ai.djl.translate.TranslateException;
-import co.elastic.clients.elasticsearch._types.KnnQuery;
-import co.elastic.clients.elasticsearch._types.KnnSearch;
 import co.elastic.clients.elasticsearch._types.query_dsl.BoolQuery;
 import co.elastic.clients.elasticsearch._types.query_dsl.Query;
 import com.forensicintelligencethreatreport.forensicintelligencethreatreport.dto.AdvancedSearchRequestDTO;
@@ -12,7 +10,6 @@ import com.forensicintelligencethreatreport.forensicintelligencethreatreport.exc
 import com.forensicintelligencethreatreport.forensicintelligencethreatreport.indexmodel.DummyIndex;
 import com.forensicintelligencethreatreport.forensicintelligencethreatreport.service.interfaces.SearchService;
 import com.forensicintelligencethreatreport.forensicintelligencethreatreport.util.VectorizationUtil;
-//import joptsimple.internal.Strings;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.common.unit.Fuzziness;
@@ -26,6 +23,9 @@ import org.springframework.data.elasticsearch.core.SearchHit;
 import org.springframework.data.elasticsearch.core.SearchHitSupport;
 import org.springframework.data.elasticsearch.core.SearchHits;
 import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
+import org.springframework.data.elasticsearch.core.query.HighlightQuery;
+import org.springframework.data.elasticsearch.core.query.highlight.Highlight;
+import org.springframework.data.elasticsearch.core.query.highlight.HighlightField;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -91,49 +91,35 @@ public class SearchServiceImpl implements SearchService {
                 .should( sb -> sb.match(m -> m.field("content_sr").query(text).boost(2.0f)))
                 .should( sb -> sb.match(m -> m.field("content_en").query(text)))
                 .should(sb -> sb.match(m -> m.field("title").query(text).boost(1.5f)))
-                .should(sb -> sb.matchPhrase(m -> m.field("forensician_name").query(text))) // Dodato
-                .should(sb -> sb.matchPhrase(m -> m.field("organization").query(text)))     // Dodato
-                .should(sb -> sb.matchPhrase(m -> m.field("malware_name").query(text)))      // Dodato
         )._toQuery();
-        return executeQuery(query, pageable);
+
+        NativeQuery nativeQuery = new NativeQueryBuilder()
+                .withQuery(query)
+                .withPageable(pageable)
+                .withHighlightQuery(new HighlightQuery(
+                        new Highlight(List.of(
+                                new HighlightField("content_sr"),
+                                new HighlightField("content_en"),
+                                new HighlightField("title")
+                        )),
+                        DummyIndex .class
+                )).build();
+
+        SearchHits<DummyIndex> searchHits = elasticsearchTemplate.search(
+                nativeQuery,
+                DummyIndex.class,
+                IndexCoordinates.of("dummy_index")
+        );
+
+        List<SearchResultDTO> results = searchHits.stream()
+                .map(this::convertToSearchResult)
+                .collect(Collectors.toList());
+
+        return new PageImpl<>(results, pageable, searchHits.getTotalHits());
     }
 
     private Query buildBasicQuery(BasicSearchRequestDTO request) {
         return BoolQuery.of(q -> {
-//                .must(mq -> {
-//                    if (request.forensicianName() != null && !request.forensicianName().isEmpty()) {
-//                        mq.match(m -> m.field("title")
-//                                .fuzziness(Fuzziness.ONE.asString())
-//                                .query(request.forensicianName()));
-//                    }
-//                    return mq;
-//                })
-//                .should(
-//                        sb -> request.hashValue() != null && !request.hashValue().isEmpty()
-//                                ? sb.term(t -> t.field("hash_md5").value(request.hashValue()))
-//                                : sb.matchAll(m -> m))
-//
-//                .should(        sb -> request.hashValue() != null && !request.hashValue().isEmpty()
-//                                ? sb.term(t -> t.field("hash_sha256").value(request.hashValue()))
-//                                : sb.matchAll(m -> m))
-//
-//                .should(        sb -> request.threatLevel() != null && !request.threatLevel().isEmpty()
-//                                ? sb.term(t -> t.field("threat_level").value(request.threatLevel()))
-//                                : sb.matchAll(m -> m))
-//
-//                .should(        sb -> request.organization() != null && !request.organization().isEmpty()
-//                                ? sb.match(m -> m.field("organization")
-//                                .fuzziness(Fuzziness.ONE.asString())
-//                                .query(request.organization()))
-//                                : sb.matchAll(m -> m))
-//
-//                .should(        sb -> request.malwareName() != null && !request.malwareName().isEmpty()
-//                                ? sb.match(m -> m.field("malware_name")
-//                                .fuzziness(Fuzziness.ONE.asString())
-//                                .query(request.malwareName()))
-//                                : sb.matchAll(m -> m))
-//
-//        )._toQuery();
 
             if (request.searchText() != null && !request.searchText().isEmpty()) {
                 q.should(s -> s.multiMatch(m -> m
@@ -146,21 +132,17 @@ public class SearchServiceImpl implements SearchService {
         if (request.forensicianName() != null && !request.forensicianName().isEmpty()) {
             q.should(s -> s.match(m -> m.field("forensician_name").query(request.forensicianName()).fuzziness("1")));
         }
-
         if (request.organization() != null && !request.organization().isEmpty()) {
             q.should(s -> s.match(m -> m.field("organization").query(request.organization()).fuzziness("1")));
         }
-
         if (request.malwareName() != null && !request.malwareName().isEmpty()) {
             q.should(s -> s.match(m -> m.field("malware_name").query(request.malwareName()).fuzziness("1")));
         }
-
         if (request.hashValue() != null && !request.hashValue().isEmpty()) {
             // Hash vrednosti su obično MD5 ili SHA256, tražimo ih u oba polja
             q.should(s -> s.term(t -> t.field("hash_md5").value(request.hashValue())));
             q.should(s -> s.term(t -> t.field("hash_sha256").value(request.hashValue())));
         }
-
         if (request.threatLevel() != null && !request.threatLevel().isEmpty()) {
             q.should(s -> s.term(t -> t.field("threat_level").value(request.threatLevel().toLowerCase())));
         }

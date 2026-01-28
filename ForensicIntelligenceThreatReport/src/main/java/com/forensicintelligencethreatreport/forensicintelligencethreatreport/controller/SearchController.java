@@ -22,13 +22,6 @@ public class SearchController {
 
     private final SearchService searchService;
 
-//    @PostMapping("/simple")
-//    public Page<DummyIndex> simpleSearch(@RequestParam Boolean isKnn,
-//                                         @RequestBody SearchQueryDTO simpleSearchQuery,
-//                                         Pageable pageable) {
-//        return searchService.simpleSearch(simpleSearchQuery.keywords(), pageable, isKnn);
-//    }
-
     @PostMapping("/basic")
     public ResponseEntity<Page<SearchResultDTO>> basicSearch(
             @RequestBody BasicSearchRequestDTO request,

@@ -1,3 +1,7 @@
+:root {
+    --pill-radius: 999px;
+}
+
 @font-face {
     font-family: 'Lulo Clean';
     src: url('src/assets/fonts/Lulo Clean W01 One Bold.ttf') format('truetype');
@@ -33,18 +37,31 @@
     background-color: #031926;
     color:#DBFCFF;
     border: none;
-    border-radius: 0;
     font-family: 'Lulo Clean', serif;
     font-size: 10px;
     height: 5vh;
     margin-left: 10px;
     border: 1px solid rgb(242, 209, 119,0);
+    position: relative;
+    transition: 
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
+    border-radius: var(--pill-radius);
+    overflow: hidden;
+}
+
+button.mat-mdc-raised-button {
+    border-radius: var(--pill-radius) !important;
 }
 
 .button:hover {
     background-color: #0AADFF;
     color: #031926;
     box-shadow: none;
+    /* background-color: rgba(8, 174, 234, 0.15);
+    color: #34c4d1;
+    box-shadow: 0 0 12px rgba(42, 245, 152, 0.35); */
 }
 
 .logout-button {
@@ -57,12 +74,18 @@
     font-size: 10px;
     height: 5vh;
     margin-left: 10px;
+    position: relative;
+    transition: 
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
+    border-radius: var(--pill-radius);
+    overflow: hidden;
 }
 
 .logout-button:hover {
     background-color: #17214d ;
     color: #becbd2 ;
-    box-shadow: none ;
 }
 
 
@@ -77,12 +100,77 @@
     height: 5vh;
     margin-left: 10px;
     margin-right: 10px;
+    position: relative;
+    transition: 
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease;
+    border-radius: var(--pill-radius);
+    overflow: hidden;
 }
 
 .login-button:hover {
-    background-color: #17214d ;
-    color: #becbd2 ;
-    box-shadow: none ;
+    background-color: rgba(8, 174, 234, 0.15);
+    color: #34c4d1;
+    box-shadow: 0 0 12px rgba(42, 245, 152, 0.35);
+}
+
+.button::before,
+.login-button::before {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+        135deg,
+        #2af598,
+        #08aeea
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+
+    /* Ovo pravi da se vidi samo ivica */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    padding: 1.5px;
+}
+
+.button:hover::before,
+.login-button:hover::before {
+    opacity: 1;
+}
+
+.logout-button::before {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        #ff4d4d,
+        #ff9f43
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    padding: 2px;
+}
+
+.logout-button:hover::before {
+    opacity: 1;
 }
 
 .navbar-title {

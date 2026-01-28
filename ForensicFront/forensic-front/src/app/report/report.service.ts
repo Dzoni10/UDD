@@ -111,7 +111,7 @@ export class ReportService {
 
   fullTextSearch(text: string, page: number = 0, size: number = 10): Observable<any> {
     return this.http.post<any>(
-      `${this.apiUrl}/fulltext?text=${encodeURIComponent(text)}&page=${page}&size=${size}`,
+      `${this.apiSearchUrl}/fulltext?text=${encodeURIComponent(text)}&page=${page}&size=${size}`,
       {}
     );
   }
