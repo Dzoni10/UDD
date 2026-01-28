@@ -91,8 +91,10 @@ public class SearchServiceImpl implements SearchService {
                 .should( sb -> sb.match(m -> m.field("content_sr").query(text).boost(2.0f)))
                 .should( sb -> sb.match(m -> m.field("content_en").query(text)))
                 .should(sb -> sb.match(m -> m.field("title").query(text).boost(1.5f)))
+                .should(sb -> sb.matchPhrase(m -> m.field("forensician_name").query(text))) // Dodato
+                .should(sb -> sb.matchPhrase(m -> m.field("organization").query(text)))     // Dodato
+                .should(sb -> sb.matchPhrase(m -> m.field("malware_name").query(text)))      // Dodato
         )._toQuery();
-
         return executeQuery(query, pageable);
     }
 
