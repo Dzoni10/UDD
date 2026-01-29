@@ -15,8 +15,6 @@ public interface SearchService {
 
     Page<SearchResultDTO> basicSearch(BasicSearchRequestDTO request, Pageable pageable);
 
-    //Page<DummyIndex> simpleSearch(List<String> keywords, Pageable pageable, boolean isKNN);
-
     Page<SearchResultDTO> advancedSearch(AdvancedSearchRequestDTO request, Pageable pageable);
 
     Page<SearchResultDTO> knnSearch(String query, Pageable pageable);

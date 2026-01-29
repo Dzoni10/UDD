@@ -40,8 +40,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/parse-preview/").hasAuthority("ROLE_USER")
                         .requestMatchers(HttpMethod.POST, "/api/parse-preview/confirm").hasAuthority("ROLE_USER")
                         .requestMatchers("/api/search/**").hasAuthority("ROLE_USER")
-
-
+                        .requestMatchers(HttpMethod.POST, "/api/geolocaion/").hasAuthority("ROLE_USER")
+                        .requestMatchers(HttpMethod.GET, "/api/geolocaion/geocode").hasAuthority("ROLE_USER")
                         // Sve ostalo traži auth
                         .anyRequest().authenticated()
                 )

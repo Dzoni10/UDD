@@ -1,18 +1,26 @@
 package com.forensicintelligencethreatreport.forensicintelligencethreatreport.configuration;
 
-import com.google.maps.GeoApiContext;
-import lombok.Value;
-import org.springframework.context.annotation.Bean;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@Slf4j
 public class GeolocationConfiguration {
 
-    //@Value("${app.google.maps.api-key:YOUR_API_KEY}")
-    private String googleMapsApiKey;
+    @Value("${app.locationiq.api-key}")
+    private String locationIqApiKey;
 
-    @Bean
-    public GeoApiContext geoApiContext(){
-        return new GeoApiContext.Builder().apiKey(googleMapsApiKey).build();
+
+    public String getLocationIqApiKey(){
+        if(locationIqApiKey == null || locationIqApiKey.isEmpty()){
+            log.warn("Open street location iq api key not configured. Geolocation not working.");
+            throw new IllegalArgumentException(
+                    "Location IQ cannot be found. " +
+                            "Set locatio iq API key in application.properties"
+            );
+        }
+        return locationIqApiKey;
     }
 }

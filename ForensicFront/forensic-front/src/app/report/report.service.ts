@@ -7,6 +7,9 @@ import { ParsedDocument } from './model/ParsedDocument.model';
 import { ConfirmIndexDocument } from './model/ConfirmIndexDocument.model';
 import { BasicSearchRequest } from './model/BasicSearchRequest.model';
 import { AdvancedSearchRequest } from './model/AdvancedSearchRequest.model';
+import { GeocodeResponse } from './model/GeocodeResponse.model';
+import { GeoLocationSearchRequest } from './model/GeoLocationSearchRequest.model';
+import { GeoLocationResult } from './model/GeoLocationResult.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +19,7 @@ export class ReportService {
   private apiUrl = 'http://localhost:8080/api/file';
   private apiParseUrl = 'http://localhost:8080/api/parse-preview';
   private apiSearchUrl = 'http://localhost:8080/api/search';
-
+  private apiGeoSearchUrl = 'http://localhost:8080/api/geolocation'
 
   constructor(private http: HttpClient, private authService:AuthService) { }
 
@@ -116,5 +119,20 @@ export class ReportService {
     );
   }
 
+
+  //GEOCODE SEARCH
+
+  geocodeAddress(address: string): Observable<GeocodeResponse> {
+    return this.http.get<GeocodeResponse>(
+      `${this.apiGeoSearchUrl}/geocode?address=${encodeURIComponent(address)}`
+    );
+  }
+
+  searchByGeolocation(request: GeoLocationSearchRequest): Observable<GeoLocationResult[]> {
+    return this.http.post<GeoLocationResult[]>(
+      `${this.apiGeoSearchUrl}/search`,
+      request
+    );
+  }
 
 }

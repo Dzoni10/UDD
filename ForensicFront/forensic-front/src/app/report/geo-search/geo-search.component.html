@@ -1,1 +1,105 @@
-<p>geo-search works!</p>
+<div class="geolocation-container">
+
+  <!-- Header -->
+  <div class="geo-header">
+    <h1>🗺️ Geolocation search cases</h1>
+    <p class="subtitle">Find CERT/CSIRT organizations with location</p>
+  </div>
+
+  <!-- Search Form and Map -->
+  <div class="geo-content">
+
+    <!-- Leva strana - Forma -->
+    <div class="search-panel">
+      <h2>Search parameters</h2>
+
+      <div class="form-group">
+        <label for="cityInput">City or address</label>
+        <input 
+          id="cityInput"
+          type="text" 
+          [(ngModel)]="cityOrAddress"
+          placeholder="Input city or address"
+          (keyup.enter)="performGeoSearch()"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="radiusInput">Radius (km)</label>
+        <div class="radius-input-group">
+          <input 
+            id="radiusInput"
+            type="number" 
+            [(ngModel)]="radiusKm"
+            min="1"
+            max="500"
+            step="5"
+          />
+          <span class="radius-value">{{ radiusKm }} km</span>
+        </div>
+        <input 
+          type="range" 
+          [(ngModel)]="radiusKm"
+          min="1"
+          max="500"
+          step="5"
+          class="radius-slider"
+        />
+      </div>
+
+      <div class="form-actions">
+        <button 
+          class="btn btn-search" 
+          (click)="performGeoSearch()"
+          [disabled]="isSearching">
+          {{ isSearching ? '⏳ Searching...' : '🔍 Search' }}
+        </button>
+        <button 
+          class="btn btn-clear" 
+          (click)="clearSearch()">
+          🗑️ Clear
+        </button>
+      </div>
+
+      <!-- Results List -->
+      <div *ngIf="hasSearched" class="results-panel">
+        <h3>📊 Results ({{ totalResults }})</h3>
+        
+        <div *ngIf="totalResults === 0" class="no-results">
+          <p>There are no organization in this radius</p>
+        </div>
+
+        <div *ngFor="let result of results" class="result-item">
+          <div class="result-header">
+            <h4>{{ result.organization }}</h4>
+            <span 
+              class="threat-badge"
+              [style.backgroundColor]="getThreatLevelColor(result.threat_level)">
+              {{ getThreatLevelLabel(result.threat_level) }}
+            </span>
+          </div>
+
+          <div class="result-details">
+            <p><strong>📍 Location:</strong> {{ result.city }}, {{ result.country }}</p>
+            <p><strong>📏 Distance:</strong> {{ result.distance_km.toFixed(2) }} km</p>
+            <p><strong>🚨 Cases:</strong> {{ result.incident_count }}</p>
+          </div>
+
+          <button 
+            class="btn-zoom"
+            (click)="zoomToResult(result)">
+             Show on map
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="map-panel">
+      <div #mapContainer class="map-container"></div>
+    </div>
+
+  </div>
+
+</div>
