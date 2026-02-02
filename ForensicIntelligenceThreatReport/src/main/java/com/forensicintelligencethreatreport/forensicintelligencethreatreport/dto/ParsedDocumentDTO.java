@@ -15,6 +15,10 @@ public record ParsedDocumentDTO (
         @JsonProperty("organization")
         String organization,
 
+        @JsonProperty("organization_address")  // ✅ NOVO
+        String organizationAddress,
+
+
         @JsonProperty("malware_name")
         String malwareName,
 

@@ -13,6 +13,9 @@ public record IndexDocumentDTO (
         @JsonProperty("organization")
         String organization,
 
+        @JsonProperty("organization_address")
+        String organizationAddress,
+
         @JsonProperty("malware_name")
         String malwareName,
 

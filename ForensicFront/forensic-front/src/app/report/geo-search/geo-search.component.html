@@ -78,13 +78,11 @@
               {{ getThreatLevelLabel(result.threat_level) }}
             </span>
           </div>
-
           <div class="result-details">
             <p><strong>📍 Location:</strong> {{ result.city }}, {{ result.country }}</p>
             <p><strong>📏 Distance:</strong> {{ result.distance_km.toFixed(2) }} km</p>
             <p><strong>🚨 Cases:</strong> {{ result.incident_count }}</p>
           </div>
-
           <button 
             class="btn-zoom"
             (click)="zoomToResult(result)">
@@ -92,14 +90,9 @@
           </button>
         </div>
       </div>
-
     </div>
-
-
     <div class="map-panel">
       <div #mapContainer class="map-container"></div>
     </div>
-
   </div>
-
 </div>

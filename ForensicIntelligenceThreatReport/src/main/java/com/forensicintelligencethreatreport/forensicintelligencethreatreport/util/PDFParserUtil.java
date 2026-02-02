@@ -13,17 +13,22 @@ import java.util.regex.Pattern;
 public class PDFParserUtil {
 
     private static final Pattern FORENSICIAN_PATTERN = Pattern.compile(
-            "(?i)(forensician|analyst|author|извештач|forenzičar|forenzicar|форензичар|аутор|autor)\\s*[:\\-]?\\s*([A-Za-zА-Яа-я\\s]+?)(?=\\n|$)",
+            "(?i)(forensician|analyst|author|извештач|forenzičar|forenzicar|prepared by|analiticar|analitičar|аналитичар)\\s*[:\\-]?\\s*([^,\\n\\r]+)",
             Pattern.CASE_INSENSITIVE | Pattern.MULTILINE
     );
 
     private static final Pattern ORGANIZATION_PATTERN = Pattern.compile(
-            "(?i)(cert|csirt|organization|agency|organizacija|организација|agencija|агенција)\\s*[:\\-]?\\s*([A-Za-zА-Яа-я0-9\\.\\s]+?)(?=\\n|$)",
+            "(?i)(organization|organizacija|agencija|agency|агенција|организација)\\s*[:\\-]?\\s*([^\\n\\r]+?)(?=\\s*(address|adresa|location|datum|$))",
+            Pattern.CASE_INSENSITIVE | Pattern.MULTILINE
+    );
+
+    private static final Pattern ADDRESS_PATTERN = Pattern.compile(
+            "(?i)(address|adresa|lokacija)\\s*[:\\-]\\s*([^\\n\\r]+?)(?=\\s*(?:Datum|Nivo|Date|Level|дату|Ниво|Vrijeme|$))",
             Pattern.CASE_INSENSITIVE | Pattern.MULTILINE
     );
 
     private static final Pattern MALWARE_PATTERN = Pattern.compile(
-            "(?i)(malware|threat|virus|trojan|trojanac|malver|малвер|тројанац|тројан|pretnja|претња)\\s*[:\\-]?\\s*([A-Za-zА-Яа-я0-9\\.\\s\\-_]+?)(?=\\n|$)",
+            "(?i)(malware|threat|virus|trojan|trojanac|malver|малвер|тројанац|тројан|pretnja|претња|naziv pretnje|назив претње|naziv virusa|нази вируса)\\s*[:\\-]?\\s*([A-Za-zА-Яа-я0-9\\.\\s\\-_]+?)(?=\\n|$)",
             Pattern.CASE_INSENSITIVE | Pattern.MULTILINE
     );
 
@@ -55,21 +60,72 @@ public class PDFParserUtil {
 
     // Ekstraktuj organizaciju
     public static String extractOrganization(String pdfText) {
-        return extractPatternValue(pdfText, ORGANIZATION_PATTERN);
+        String cleanText = pdfText.replace('\u00A0',' ').replaceAll("[\\r\\n]+","\n").replaceAll(" +"," ");
+        return extractPatternValue(cleanText, ORGANIZATION_PATTERN);
     }
 
-    // Ekstraktuj malver
+    public static String extractOrganizationAddress(String pdfText) {
+        log.info("Extracting organization address from PDF text");
+        try {
+
+            String cleanText = pdfText.replace('\u00A0',' ').replaceAll("[\\r\\n]+","\n").replaceAll(" +"," ");
+
+            log.debug("PDF Text (first 500 chars): {}",cleanText.substring(0,Math.min(500,cleanText.length())));
+
+            Matcher matcher = ADDRESS_PATTERN.matcher(cleanText);
+
+            if(matcher.find()) {
+                String extracted = matcher.group(2).trim();
+                log.info("Regex matched, raw extraction: {}",extracted);
+                extracted = extracted.split("\\n")[0].trim(); // Uzmi samo prvi red vrednosti
+                extracted = extracted.replaceAll("[:\\-]$", "").trim();
+
+                log.info("Cleaned extraction: {}",extracted);
+
+                if (extracted.length() > 3 && !extracted.equalsIgnoreCase("Unknown")) {
+                    log.info("Found Address: {}", extracted);
+                    return extracted;
+                }
+            }else{
+                log.warn("Primary address pattern did not match");
+            }
+
+            log.warn("Primary address extraction failed, trying fallback patterns");
+            Pattern simpleFallback = Pattern.compile("(?i)adresa[:\\-]\\s*(.+?)(?=\\n|$)",Pattern.CASE_INSENSITIVE | Pattern.MULTILINE);
+
+            Matcher fallbackMatcher = simpleFallback.matcher(cleanText);
+            if(fallbackMatcher.find()) {
+                String fallbackAddress = fallbackMatcher.group(1).trim();
+                log.info("Fallback 1: Found address with simple pattern: {}",fallbackAddress);
+                return fallbackAddress;
+            }
+            Pattern cityPattern = Pattern.compile(
+                    "(?i)\\b(city|grad|mesto|град|место|place)\\s*[:\\-]?\\s*([A-Za-zА-Яа-я\\s]+?)(?=\\n|Datum|Nivo|Датум|Ниво|Date|Level$)",
+                    Pattern.CASE_INSENSITIVE | Pattern.MULTILINE
+            );
+
+
+            String city = extractPatternValue(cleanText, cityPattern);
+            if (city != null && !city.isEmpty() && !city.equals("Unknown")) {
+                log.info("Fallback: Extracted city as address: {}", city);
+                return city;
+            }
+        } catch (Exception e) {
+            log.warn("Error extracting organization address: {}", e.getMessage());
+        }
+        log.warn("Could not extract organization address, returning Unknown");
+        return "Unknown";
+    }
+
     public static String extractMalware(String pdfText) {
         return extractPatternValue(pdfText, MALWARE_PATTERN);
     }
 
-    // Ekstraktuj nivo pretnje
     public static String extractThreatLevel(String pdfText) {
         String extracted = extractPatternValue(pdfText, THREAT_LEVEL_PATTERN);
         return normalizeThreatLevel(extracted);
     }
 
-    // Ekstraktuj MD5
     public static String extractMD5(String pdfText) {
         return extractPatternValue(pdfText, MD5_PATTERN);
     }
@@ -84,26 +140,23 @@ public class PDFParserUtil {
         int malwareIndex = pdfText.toLowerCase().indexOf(
                 malwareName != null ? malwareName.toLowerCase() : "malware"
         );
-
         if (malwareIndex != -1) {
             int endIndex = Math.min(malwareIndex + 500, pdfText.length());
             return pdfText.substring(malwareIndex, endIndex).trim();
         }
-
         return pdfText.substring(0, Math.min(500, pdfText.length())).trim();
     }
 
-    // HELPER: Ekstraktuj vrednost iz regex pattern-a
     private static String extractPatternValue(String text, Pattern pattern) {
+        if(text == null || text.isEmpty()) return "";
         Matcher matcher = pattern.matcher(text);
         if (matcher.find()) {
-            String value = matcher.group(matcher.groupCount());
+            String value = matcher.group(2);
             return value != null ? value.trim() : "";
         }
         return "";
     }
 
-    // HELPER: Normalizuj nivo pretnje
     private static String normalizeThreatLevel(String level) {
         if (level.isEmpty()) return "medium";
 
@@ -112,7 +165,6 @@ public class PDFParserUtil {
         if (normalized.contains("high") || normalized.contains("visoka") ||normalized.contains("висока")) return "high";
         if (normalized.contains("medium") || normalized.contains("srednja")||normalized.contains("средња")) return "medium";
         if (normalized.contains("low") || normalized.contains("niska")||normalized.contains("ниска")) return "low";
-
         return "medium";
     }
 }

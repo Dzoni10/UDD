@@ -37,6 +37,18 @@ public class DummyIndex {
     @Field(type = FieldType.Text, name = "organization")
     private String organization;
 
+    @Field(type = FieldType.Text, name = "organization_city")  // ✅ NOVO
+    private String organizationCity;
+
+    @Field(type = FieldType.Text, name = "organization_country")  // ✅ NOVO
+    private String organizationCountry;
+
+    @Field(type = FieldType.Double, name = "organization_latitude")  // ✅ NOVO
+    private Double organizationLatitude;
+
+    @Field(type = FieldType.Double, name = "organization_longitude")  // ✅ NOVO
+    private Double organizationLongitude;
+
     @Field(type = FieldType.Text, name = "malware_name")
     private String malwareName;
 

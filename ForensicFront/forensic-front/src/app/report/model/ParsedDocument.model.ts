@@ -3,6 +3,7 @@ export interface ParsedDocument{
   title: string;
   forensician_name: string;
   organization: string;
+  organization_address: string;
   malware_name: string;
   malware_description: string;
   threat_level: string;

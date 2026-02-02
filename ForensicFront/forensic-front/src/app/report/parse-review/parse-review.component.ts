@@ -24,6 +24,7 @@ export class ParseReviewComponent implements OnInit{
     server_filename: '',
     forensician_name: '',
     organization: '',
+    organization_address: '',
     malware_name: '',
     malware_description: '',
     threat_level: 'medium',
@@ -108,6 +109,7 @@ export class ParseReviewComponent implements OnInit{
         server_filename: this.parsedDocument.server_filename,
         forensician_name: this.parsedDocument.forensician_name,
         organization: this.parsedDocument.organization,
+        organization_address: this.parsedDocument.organization_address,
         malware_name: this.parsedDocument.malware_name,
         malware_description: this.parsedDocument.malware_description,
         threat_level: this.parsedDocument.threat_level,
@@ -160,7 +162,7 @@ export class ParseReviewComponent implements OnInit{
         );
 
         setTimeout(() => {
-          this.router.navigate(['/search/basic']);
+          this.router.navigate(['search']);
         }, 2000);
       },
       error: (error) => {
